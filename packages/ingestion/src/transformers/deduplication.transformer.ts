@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 import { UnifiedDataModel, DataRepository } from '@buenro/common';
 
 /**
@@ -17,7 +17,7 @@ export class DeduplicationTransformer extends Transform {
     super({ objectMode: true });
   }
 
-  async _transform(chunk: UnifiedDataModel, encoding: string, callback: Function) {
+  async _transform(chunk: UnifiedDataModel, encoding: string, callback: TransformCallback) {
     this.batch.push(chunk);
 
     if (this.batch.length >= this.batchSize) {
@@ -25,14 +25,14 @@ export class DeduplicationTransformer extends Transform {
         await this.processBatch();
         callback();
       } catch (error) {
-        callback(error);
+        callback(error as Error);
       }
     } else {
       callback();
     }
   }
 
-  async _flush(callback: Function) {
+  async _flush(callback: TransformCallback) {
     try {
       if (this.batch.length > 0) {
         await this.processBatch();
@@ -40,7 +40,7 @@ export class DeduplicationTransformer extends Transform {
       this.onSkipped(this.skippedCount);
       callback();
     } catch (error) {
-      callback(error);
+      callback(error as Error);
     }
   }
 

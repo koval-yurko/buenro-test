@@ -52,7 +52,8 @@ export function buildMongoFilter(queryParams: Record<string, any>): Record<strin
             break;
           } else if (operator === 'in' || operator === 'nin') {
             // Split comma-separated values
-            const values = typeof operatorValue === 'string' ? operatorValue.split(',') : [operatorValue];
+            const values =
+              typeof operatorValue === 'string' ? operatorValue.split(',') : [operatorValue];
             filterValue[mongoOperator] = values;
           } else if (operator === 'regex') {
             filterValue[mongoOperator] = operatorValue;

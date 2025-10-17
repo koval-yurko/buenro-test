@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 import { UnifiedDataModel, DataRepository } from '@buenro/common';
 
 /**
@@ -16,7 +16,7 @@ export class BatchInsertTransformer extends Transform {
     super({ objectMode: true });
   }
 
-  async _transform(chunk: UnifiedDataModel, encoding: string, callback: Function) {
+  async _transform(chunk: UnifiedDataModel, encoding: string, callback: TransformCallback) {
     this.batch.push(chunk);
 
     if (this.batch.length >= this.batchSize) {
@@ -24,14 +24,14 @@ export class BatchInsertTransformer extends Transform {
         await this.insertBatch();
         callback();
       } catch (error) {
-        callback(error);
+        callback(error as Error);
       }
     } else {
       callback();
     }
   }
 
-  async _flush(callback: Function) {
+  async _flush(callback: TransformCallback) {
     try {
       if (this.batch.length > 0) {
         await this.insertBatch();
@@ -39,7 +39,7 @@ export class BatchInsertTransformer extends Transform {
       this.onInserted(this.insertedCount);
       callback();
     } catch (error) {
-      callback(error);
+      callback(error as Error);
     }
   }
 

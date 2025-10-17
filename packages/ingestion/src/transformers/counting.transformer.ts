@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 
 /**
  * Transformer that counts items passing through the stream
@@ -10,13 +10,13 @@ export class CountingTransformer extends Transform {
     super({ objectMode: true });
   }
 
-  _transform(chunk: { key: number; value: any }, encoding: string, callback: Function) {
+  _transform(chunk: { key: number; value: any }, encoding: string, callback: TransformCallback) {
     this.count++;
     this.push(chunk.value);
     callback();
   }
 
-  _flush(callback: Function) {
+  _flush(callback: TransformCallback) {
     this.onCount(this.count);
     callback();
   }

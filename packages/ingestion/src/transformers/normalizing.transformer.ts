@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 import { Logger } from '@nestjs/common';
 import { IDataNormalizer } from '../normalizers/interface';
 import { Schema1Normalizer } from '../normalizers/schema1-normalizer.service';
@@ -14,7 +14,7 @@ export class NormalizingTransformer extends Transform {
     super({ objectMode: true });
   }
 
-  _transform(chunk: any, encoding: string, callback: Function) {
+  _transform(chunk: any, encoding: string, callback: TransformCallback) {
     const normalizer = this.createNormalizer(this.sourceUrl);
 
     if (!normalizer) {

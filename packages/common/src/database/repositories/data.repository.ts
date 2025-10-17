@@ -50,7 +50,10 @@ export class DataRepository {
    * @param options - Pagination and sorting options
    * @returns Array of documents
    */
-  async findAll(filterParams: Record<string, any>, options: FindOptions = {}): Promise<UnifiedDataModel[]> {
+  async findAll(
+    filterParams: Record<string, any>,
+    options: FindOptions = {},
+  ): Promise<UnifiedDataModel[]> {
     const { limit = 10, offset = 0, sort } = options;
 
     const filter = buildMongoFilter(filterParams);
