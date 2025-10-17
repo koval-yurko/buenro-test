@@ -31,4 +31,4 @@ export class Data extends Document {
 export const DataSchema = SchemaFactory.createForClass(Data);
 
 // Create compound indexes
-DataSchema.index({ source: 1, ingestedAt: -1 });
+DataSchema.index({ id: 1, source: 1 }, { unique: true }); // For deduplication

@@ -1,17 +1,20 @@
 import { NestFactory } from '@nestjs/core';
-import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  // Create the app - this will trigger onModuleInit
   const app = await NestFactory.create(AppModule);
 
-  // Get ConfigService from the app
-  const configService = app.get(ConfigService);
-  const port = configService.get<number>('PORT', 3001);
+  // Initialize the app (triggers lifecycle hooks)
+  await app.init();
 
-  await app.listen(port);
+  console.log('Ingestion completed successfully');
 
-  console.log(`Ingestion service is running on port ${port}`);
+  // Close the app after ingestion is done
+  await app.close();
+
+  // Exit with success code
+  process.exit(0);
 }
 
 bootstrap();

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "1",
+    "name": "Test name",
+    "address": {
+    "country": "Test country",
+    "city": "Test city"
+    },
+    "isAvailable": true,
+    "priceForNight": 150
+  },
+  {
+    "id": "2",
+    "name": "Test bla",
+    "address": {
+      "country": "Test bla country",
+      "city": "Test bla city"
+    },
+    "isAvailable": false,
+    "priceForNight": 500
+  },
+  {
+    "id": "3",
+    "name": "Test no name",
+    "address": {
+      "country": "Test no country",
+      "city": "Test no city"
+    },
+    "isAvailable": true,
+    "priceForNight": 999
+  },
+  {
+    "id": "4",
+    "name": "Example Property",
+    "address": {
+      "country": "United States",
+      "city": "New York"
+    },
+    "isAvailable": true,
+    "priceForNight": 250
+  },
+  {
+    "id": "5",
+    "name": "Sample Location",
+    "address": {
+      "country": "France",
+      "city": "Paris"
+    },
+    "isAvailable": false,
+    "priceForNight": 350
+  },
+  {
+    "id": "6",
+    "name": "Beach Resort",
+    "address": {
+      "country": "Thailand",
+      "city": "Phuket"
+    },
+    "isAvailable": true,
+    "priceForNight": 180
+  },
+  {
+    "id": "7",
+    "name": "Mountain Cabin",
+    "address": {
+      "country": "Canada",
+      "city": "Whistler"
+    },
+    "isAvailable": true,
+    "priceForNight": 420
+  },
+  {
+    "id": "8",
+    "name": "City Apartment",
+    "address": {
+      "country": "Germany",
+      "city": "Berlin"
+    },
+    "isAvailable": false,
+    "priceForNight": 220
+  },
+  {
+    "id": "9",
+    "name": "Luxury Villa",
+    "address": {
+      "country": "Italy",
+      "city": "Rome"
+    },
+    "isAvailable": true,
+    "priceForNight": 780
+  },
+  {
+    "id": "10",
+    "name": "Seaside Cottage",
+    "address": {
+      "country": "Greece",
+      "city": "Santorini"
+    },
+    "isAvailable": true,
+    "priceForNight": 320
+  },
+  {
+    "id": "11",
+    "name": "Urban Loft",
+    "address": {
+      "country": "United Kingdom",
+      "city": "London"
+    },
+    "isAvailable": false,
+    "priceForNight": 450
+  },
+  {
+    "id": "12",
+    "name": "Desert Retreat",
+    "address": {
+      "country": "United Arab Emirates",
+      "city": "Dubai"
+    },
+    "isAvailable": true,
+    "priceForNight": 650
+  },
+  {
+    "id": "13",
+    "name": "Countryside House",
+    "address": {
+      "country": "Portugal",
+      "city": "Lisbon"
+    },
+    "isAvailable": true,
+    "priceForNight": 280
+  },
+  {
+    "id": "14",
+    "name": "Historic Manor",
+    "address": {
+      "country": "Austria",
+      "city": "Vienna"
+    },
+    "isAvailable": false,
+    "priceForNight": 560
+  },
+  {
+    "id": "15",
+    "name": "Tropical Bungalow",
+    "address": {
+      "country": "Mexico",
+      "city": "Cancun"
+    },
+    "isAvailable": true,
+    "priceForNight": 195
+  }
+]
