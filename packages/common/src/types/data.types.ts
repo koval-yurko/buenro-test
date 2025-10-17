@@ -20,9 +20,6 @@ export interface UnifiedDataModel {
   /** Price value (standardized field from priceForNight/pricePerNight) */
   price?: number;
 
-  /** Price segment classification (high/medium/low) */
-  priceSegment?: 'high' | 'medium' | 'low';
-
   /** Raw original data for reference */
-  raw?: Record<string, any>;
+  props?: Record<string, any>;
 }

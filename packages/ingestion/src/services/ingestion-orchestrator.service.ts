@@ -24,8 +24,8 @@ export class IngestionOrchestratorService {
     private readonly dataRepository: DataRepository,
     private readonly configService: ConfigService,
   ) {
-    this.checkBatchSize = this.configService.get<number>('CHECK_BATCH_SIZE', 50);
-    this.insertBatchSize = this.configService.get<number>('INSERT_BATCH_SIZE', 50);
+    this.checkBatchSize = parseInt(this.configService.get<string>('CHECK_BATCH_SIZE', '50'));
+    this.insertBatchSize = parseInt(this.configService.get<string>('INSERT_BATCH_SIZE', '50'));
   }
 
   public async ingestSource(source: IngestionSource): Promise<void> {

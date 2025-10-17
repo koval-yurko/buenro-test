@@ -21,11 +21,8 @@ export class Data extends Document {
   @Prop({ index: true })
   price?: number;
 
-  @Prop({ index: true })
-  priceSegment?: string;
-
   @Prop({ type: Object })
-  raw?: Record<string, any>;
+  props?: Record<string, any>;
 }
 
 export const DataSchema = SchemaFactory.createForClass(Data);

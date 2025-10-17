@@ -1,5 +1,6 @@
-import { Module, DynamicModule, Global } from '@nestjs/common';
-import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
+import { Module, DynamicModule, Global, OnModuleInit } from '@nestjs/common';
+import { MongooseModule, MongooseModuleFactoryOptions, InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { Data, DataSchema } from './schemas/data.schema';
 import { DataRepository } from './repositories/data.repository';
 
@@ -9,7 +10,13 @@ import { DataRepository } from './repositories/data.repository';
  */
 @Global()
 @Module({})
-export class DatabaseModule {
+export class DatabaseModule implements OnModuleInit {
+  constructor(@InjectModel(Data.name) private dataModel: Model<Data>) {}
+
+  async onModuleInit() {
+    // Create all indexes at once
+    await this.dataModel.syncIndexes();
+  }
   /**
    * Register the database module with async MongoDB connection
    * Useful when URI comes from ConfigService

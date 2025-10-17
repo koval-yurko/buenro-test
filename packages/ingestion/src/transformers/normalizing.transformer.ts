@@ -29,10 +29,10 @@ export class NormalizingTransformer extends Transform {
   }
 
   private createNormalizer(source: string): IDataNormalizer | undefined {
-    if (source.includes('test')) {
+    if (source.includes('test') || source.includes('/structured_')) {
       return new Schema1Normalizer();
     }
-    if (source.includes('')) {
+    if (source.includes('/large_')) {
       return new Schema2Normalizer();
     }
   }
