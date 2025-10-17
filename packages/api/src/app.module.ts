@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from '@buenro/common';
-import { DataModule } from './data/data.module';
+import { DataController } from './controllers/data.controller';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { DataModule } from './data/data.module';
       }),
       inject: [ConfigService],
     }),
-    DataModule,
   ],
+  controllers: [DataController],
 })
 export class AppModule {}

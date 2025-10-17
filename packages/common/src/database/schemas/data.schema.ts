@@ -13,9 +13,6 @@ export class Data extends Document {
   ingestedAt: Date;
 
   @Prop({ index: true })
-  name?: string;
-
-  @Prop({ index: true })
   isAvailable?: boolean;
 
   @Prop({ index: true })

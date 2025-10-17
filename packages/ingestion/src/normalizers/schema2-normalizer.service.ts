@@ -15,7 +15,7 @@ import { IDataNormalizer } from './interface';
 @Injectable()
 export class Schema2Normalizer implements IDataNormalizer {
   normalize(item: any, source: string): UnifiedDataModel {
-    const { id, name, availability, pricePerNight, ...props } = item;
+    const { id, availability, pricePerNight, ...props } = item;
     return {
       id: String(id),
       source,

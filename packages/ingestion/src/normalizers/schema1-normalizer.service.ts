@@ -15,12 +15,11 @@ import { IDataNormalizer } from './interface';
 @Injectable()
 export class Schema1Normalizer implements IDataNormalizer {
   normalize(item: any, source: string): UnifiedDataModel {
-    const { id, name, isAvailable, priceForNight, ...props } = item;
+    const { id, isAvailable, priceForNight, ...props } = item;
     return {
       id: String(id),
       source,
       ingestedAt: new Date(),
-      name: name,
       isAvailable: Boolean(isAvailable),
       price: Number(priceForNight),
       props,

@@ -11,9 +11,6 @@ export interface UnifiedDataModel {
   /** Timestamp when data was ingested */
   ingestedAt: Date;
 
-  /** Human-readable name/title */
-  name?: string;
-
   /** Availability status */
   isAvailable?: boolean;
 
