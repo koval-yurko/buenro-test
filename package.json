@@ -14,6 +14,10 @@
     "start:api": "npm run build:common && npm run start:dev --workspace=@buenro/api",
     "start:ingestion": "npm run build:common && npm run start:dev --workspace=@buenro/ingestion",
     "test": "npm run test --workspaces --if-present",
+    "test:cov": "npm run test:cov --workspaces --if-present",
+    "test:cov:common": "npm run test:cov --workspace=@buenro/common",
+    "test:cov:api": "npm run test:cov --workspace=@buenro/api",
+    "test:cov:ingestion": "npm run test:cov --workspace=@buenro/ingestion",
     "lint": "npm run lint --workspaces --if-present",
     "format": "npm run format --workspaces --if-present"
   },
