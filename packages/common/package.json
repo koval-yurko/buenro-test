@@ -7,6 +7,8 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
     "test": "echo \"No tests yet\" && exit 0"
   },
   "keywords": [],
@@ -21,6 +23,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.42.0",
+    "prettier": "^3.0.0",
     "typescript": "^5.3.0"
   }
 }

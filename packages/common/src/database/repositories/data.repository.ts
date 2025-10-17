@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Data } from '@/database/schemas/data.schema';
-import { UnifiedDataModel } from '@/types/data.types';
+import { Data } from '../schemas/data.schema';
+import { UnifiedDataModel } from '../../types/data.types';
 
 /**
  * Repository for Data collection operations

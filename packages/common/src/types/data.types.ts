@@ -26,4 +26,3 @@ export interface UnifiedDataModel {
   /** Raw original data for reference */
   raw?: Record<string, any>;
 }
-

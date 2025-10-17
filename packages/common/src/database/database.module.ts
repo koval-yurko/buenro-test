@@ -1,7 +1,7 @@
 import { Module, DynamicModule, Global } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Data, DataSchema } from '@/database/schemas/data.schema';
-import { DataRepository } from '@/database/repositories/data.repository';
+import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
+import { Data, DataSchema } from './schemas/data.schema';
+import { DataRepository } from './repositories/data.repository';
 
 /**
  * Database module that can be shared across applications
@@ -11,14 +11,22 @@ import { DataRepository } from '@/database/repositories/data.repository';
 @Module({})
 export class DatabaseModule {
   /**
-   * Register the database module with MongoDB connection
-   * @param uri MongoDB connection URI
+   * Register the database module with async MongoDB connection
+   * Useful when URI comes from ConfigService
    */
-  static forRoot(uri: string): DynamicModule {
+  static forRootAsync(options: {
+    useFactory: (
+      ...args: any[]
+    ) => Promise<MongooseModuleFactoryOptions> | MongooseModuleFactoryOptions;
+    inject?: any[];
+  }): DynamicModule {
     return {
       module: DatabaseModule,
       imports: [
-        MongooseModule.forRoot(uri),
+        MongooseModule.forRootAsync({
+          useFactory: options.useFactory,
+          inject: options.inject,
+        }),
         MongooseModule.forFeature([{ name: Data.name, schema: DataSchema }]),
       ],
       providers: [DataRepository],
@@ -33,9 +41,7 @@ export class DatabaseModule {
   static forFeature(): DynamicModule {
     return {
       module: DatabaseModule,
-      imports: [
-        MongooseModule.forFeature([{ name: Data.name, schema: DataSchema }]),
-      ],
+      imports: [MongooseModule.forFeature([{ name: Data.name, schema: DataSchema }])],
       providers: [DataRepository],
       exports: [DataRepository],
     };

@@ -5,8 +5,8 @@
     "rootDir": "./src",
     "baseUrl": "./",
     "paths": {
-      "@buenro/common": ["../../packages/common/src"],
-      "@buenro/common/*": ["../../packages/common/src/*"]
+      "@buenro/common": ["../../packages/common/dist"],
+      "@buenro/common/*": ["../../packages/common/dist/*"]
     }
   },
   "include": ["src/**/*"],
