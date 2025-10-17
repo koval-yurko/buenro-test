@@ -10,7 +10,7 @@ import { DatabaseModule } from '@buenro/common';
     }),
     DatabaseModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGO_URI')
+        uri: configService.get<string>('MONGO_URI'),
       }),
       inject: [ConfigService],
     }),
