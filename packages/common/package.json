@@ -4,9 +4,20 @@
   "description": "Shared types, utilities, and constants for Buenro",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "default": "./dist/*"
+    }
+  },
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "npm run clean && tsc",
+    "build:watch": "npm run clean && tsc --watch",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "test": "jest",
